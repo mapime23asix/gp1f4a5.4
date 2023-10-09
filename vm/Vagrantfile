@@ -1,0 +1,30 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bullseye64"
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 2048
+    vb.cpus = 2
+  end
+
+  config.vm.hostname = "grup08.fjeclot.net"
+  
+  config.vm.define "grup08" do |machine|
+    machine.vm.provider :virtualbox do |vb|
+      vb.name = "grup08"
+    end
+  end
+  
+  config.vm.network "public_network", type: "dhcp"
+  config.vm.network "forwarded_port", guest: 80, host: 8000
+  config.vm.synced_folder "../codi_projectes", "/home/vagrant/projectes"
+  
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y aptitude net-tools
+
+    sudo apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    sudo curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+    sudo apt-get -y update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+  SHELL
+end

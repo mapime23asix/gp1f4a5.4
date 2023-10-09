@@ -1,0 +1,55 @@
+# ASIX2 2023-2024 FJE CLOT
+
+## Requisits
+
+Requereix tenir instal·lat previament:
+Git https://git-scm.com/
+Virtualbox https://www.virtualbox.org/
+
+Instruccions per Utilitzar el Fitxer Vagrantfile
+Requisits: Assegureu-vos de tenir instal·lat VirtualBox i Vagrant al vostre sistema.
+
+Descarregar el Vagrantfile: Descarregueu el Vagrantfile que us hem proporcionat i deseu-lo al vostre sistema en un directori adequat.
+
+Iniciar la Màquina Virtual:
+
+vagrant up
+
+Aquesta comanda crearà i iniciarà la màquina virtual basada en la configuració del Vagrantfile. Aquest procés pot trigar uns minuts.
+
+Accedir a la Màquina Virtual:
+
+vagrant ssh
+
+Això us connectarà a la vostra màquina virtual mitjançant SSH. Estareu dins de la màquina virtual i podreu executar comandes en ella.
+
+Sortir de la Màquina Virtual:
+
+Per sortir de la màquina virtual i tornar al vostre sistema host, simplement executeu:
+
+exit
+
+Aturar la Màquina Virtual:
+
+Per aturar la màquina virtual sense eliminar-la:
+
+vagrant halt
+
+Eliminar la Màquina Virtual:
+
+Si ja no necessiteu la màquina virtual i voleu eliminar-la:
+
+vagrant destroy
+
+Confirmeu la vostra acció quan se us demani.
+
+Accedir als Fitxers del Projecte PHP
+Els fitxers del projecte PHP es troben a la carpeta /home/vagrant/projectes dins de la màquina virtual, que és sincronitzada amb la carpeta codis_projectes del vostre sistema host.
+
+Dentro de la màquina virtual (utilitzant vagrant ssh), podeu accedir als fitxers del projecte PHP d'aquesta manera:
+
+cd /home/vagrant/projectes
+
+Dins d'aquest directori, podeu veure i modificar els fitxers del vostre projecte PHP amb les vostres eines preferides (per exemple, editors de text, IDEs, etc.).
+
+Quan hàgiu acabat de treballar en el projecte, podeu desar els canvis i utilitzar-los com ho faríeu en qualsevol altre projecte.
